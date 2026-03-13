@@ -23,7 +23,7 @@ repository               : trimtechnologies/trimtechnologies.github.io
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/profile.jpg"
+  avatar           : images/profile-pics.jpg
   name             : O. D. Okey
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
