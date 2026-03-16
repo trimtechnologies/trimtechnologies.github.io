@@ -264,3 +264,106 @@ footer { border-top: 1px solid var(--rule); padding: 28px 0; margin-top: 80px; f
   .nav-links.open { display: flex; }
   #navbar { position: relative; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS — driven by main.js
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Page enter/exit transitions ────────────────────────── */
+body.page-enter          { opacity: 0; transform: translateY(10px); }
+body.page-enter-active   { opacity: 1; transform: translateY(0);
+                           transition: opacity .3s ease, transform .3s ease; }
+body.page-exit           { opacity: 0; transform: translateY(-8px);
+                           transition: opacity .28s ease, transform .28s ease; }
+
+/* ── Scroll-reveal cards ─────────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Talks page ──────────────────────────────────────────── */
+.talk-card {
+  background: var(--surface); border: 1px solid var(--rule);
+  border-radius: var(--radius); padding: 20px 22px;
+  display: grid; grid-template-columns: 100px 1fr; gap: 18px;
+  align-items: start; box-shadow: var(--shadow);
+  transition: box-shadow .2s, border-color .2s;
+}
+.talk-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(26,86,160,.1); }
+.talk-date-col { text-align: center; }
+.talk-month { font-family: var(--mono); font-size: .65rem; text-transform: uppercase;
+              letter-spacing: .1em; color: var(--muted); }
+.talk-year  { font-family: var(--serif); font-size: 1.5rem; font-weight: 700;
+              color: var(--accent); line-height: 1; }
+.talk-day   { font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+.talk-title { font-family: var(--serif); font-size: 1rem; font-weight: 600;
+              line-height: 1.4; margin-bottom: 4px; }
+.talk-title a { color: var(--ink); }
+.talk-title a:hover { color: var(--accent); text-decoration: none; }
+.talk-event { font-size: .88rem; font-style: italic; color: var(--muted); margin-bottom: 4px; }
+.talk-location { font-size: .82rem; color: var(--muted); margin-bottom: 8px; }
+.talk-tag {
+  display: inline-block; font-size: .65rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 3px; margin-bottom: 8px;
+}
+.talk-tag.invited   { background: #ede9fe; color: #6d28d9; }
+.talk-tag.contributed { background: #dbeafe; color: var(--tag-conf); }
+.talk-tag.keynote   { background: #fef3c7; color: #92400e; }
+.talk-list { display: flex; flex-direction: column; gap: 16px; }
+.talk-year-group { margin-bottom: 36px; }
+.talk-year-label {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 6px; margin-bottom: 14px;
+}
+
+/* ── Courses page ────────────────────────────────────────── */
+.course-card {
+  background: var(--surface); border: 1px solid var(--rule);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); transition: box-shadow .2s, border-color .2s;
+}
+.course-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(26,86,160,.1); }
+.course-card-header {
+  padding: 16px 20px 14px; border-bottom: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+}
+.course-code-badge {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  background: var(--accent-lt); color: var(--accent);
+  padding: 3px 9px; border-radius: 4px; white-space: nowrap;
+}
+.course-title-main { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; flex: 1; }
+.course-card-body { padding: 14px 20px; }
+.course-meta-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.course-meta-item { font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+.course-meta-item svg { color: var(--accent); flex-shrink: 0; }
+.course-desc { font-size: .9rem; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.course-topics { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.course-topic {
+  font-size: .72rem; background: var(--bg); border: 1px solid var(--rule);
+  padding: 2px 8px; border-radius: 3px; color: var(--muted);
+}
+.course-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.course-link {
+  font-size: .75rem; font-weight: 600; padding: 4px 12px;
+  border-radius: 4px; background: var(--bg); border: 1px solid var(--rule);
+  color: var(--muted); transition: all .15s; text-decoration: none;
+}
+.course-link:hover { background: var(--accent); color: white; border-color: var(--accent); text-decoration: none; }
+.course-status-active   { background: #d1fae5; color: #065f46; }
+.course-status-past     { background: #f1f5f9; color: var(--muted); }
+.courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 20px; }
+
+@media (max-width: 768px) {
+  .talk-card { grid-template-columns: 1fr; }
+  .talk-date-col { display: flex; gap: 8px; align-items: baseline; }
+}
