@@ -3,31 +3,32 @@ name: Generate Publications
 on:
   push:
     paths:
-      - 'publications.bib'   # runs when you edit the .bib file
-      - 'index.html'          # also runs if you edit the HTML directly
+      - 'publications.bib'        # trigger when you edit the bib file
+      - 'generate_publications.py' # or the script itself
     branches:
-      - main                  # change to 'master' if your default branch is master
+      - main                       # change to 'master' if needed
 
-  workflow_dispatch:          # allows manual trigger from GitHub Actions tab
+  workflow_dispatch:               # manual trigger from the Actions tab
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write         # needed to commit the updated index.html back
+      contents: write              # needed to push updated index.html back
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # opt into Node 24 now
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          persist-credentials: true
 
-      - name: Install dependencies
-        run: pip install bibtexparser
+      # ubuntu-latest already has Python 3.12+ — no setup-python needed
+      - name: Install bibtexparser
+        run: pip install bibtexparser --quiet
 
       - name: Run generate_publications.py
         run: python generate_publications.py
@@ -37,6 +38,10 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          # only commit if index.html actually changed
-          git diff --cached --quiet || git commit -m "Auto-update publications from publications.bib [skip ci]"
-          git push
+          # Only commit if index.html actually changed
+          if git diff --cached --quiet; then
+            echo "No changes to index.html — skipping commit."
+          else
+            git commit -m "chore: auto-update publications from publications.bib [skip ci]"
+            git push
+          fi  # ← closes the if block
