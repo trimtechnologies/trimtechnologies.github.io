@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Jane Doe — Academic Profile</title>
+
+  <!-- ╔══════════════════════════════════════════════════╗
+       ║  CUSTOMISATION: Change the title above           ║
+       ╚══════════════════════════════════════════════════╝ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════════════════
+       DESIGN TOKENS — edit these to retheme the whole site
+       ══════════════════════════════════════════════════════ */
+    :root {
+      --cream:     #f7f4ef;
+      --ink:       #1a1814;
+      --muted:     #6b6560;
+      --rule:      #d9d4cc;
+      --accent:    #2f5f4a;   /* ← main colour: change to suit your field */
+      --accent-lt: #e8f0ec;
+      --mono:      'DM Mono', monospace;
+      --serif:     'EB Garamond', Georgia, serif;
+      --max-w:     860px;
+      --side-w:    220px;
+    }
+
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── Layout shell ── */
+    .shell {
+      display: grid;
+      grid-template-columns: var(--side-w) 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 0 48px;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       HEADER
+       ══════════════════════════════════════════════════════ */
+    header {
+      grid-area: header;
+      border-bottom: 2px solid var(--ink);
+      padding: 48px 0 32px;
+      display: flex;
+      align-items: flex-end;
+      gap: 36px;
+      animation: fadeUp .6s ease both;
+    }
+
+    .avatar-wrap {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--ink);
+      background: var(--accent-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CUSTOMISATION: replace the placeholder with your photo URL */
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder initials shown when no photo */
+    .avatar-placeholder {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--accent);
+      letter-spacing: -1px;
+      user-select: none;
+    }
+
+    .header-text h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .header-text .title-line {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .header-text .contact-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .contact-row a { color: var(--muted); }
+    .contact-row a:hover { color: var(--accent); }
+
+    /* ── Nav ── */
+    nav {
+      grid-area: header;
+      align-self: start;
+      padding-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a { color: var(--ink); }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ══════════════════════════════════════════════════════
+       SIDEBAR
+       ══════════════════════════════════════════════════════ */
+    aside {
+      grid-area: sidebar;
+      padding-top: 40px;
+      font-size: 0.88rem;
+      animation: fadeUp .6s .1s ease both;
+    }
+
+    .sidebar-section { margin-bottom: 32px; }
+
+    .sidebar-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-section li {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      color: var(--ink);
+    }
+
+    .sidebar-section li::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       MAIN CONTENT
+       ══════════════════════════════════════════════════════ */
+    main {
+      grid-area: main;
+      padding: 40px 0 60px;
+      animation: fadeUp .6s .2s ease both;
+    }
+
+    /* Section headers */
+    section { margin-bottom: 52px; }
+
+    .section-heading {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 1.5px solid var(--accent);
+      padding-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Bio */
+    .bio p { margin-bottom: 1em; }
+    .bio p:last-child { margin-bottom: 0; }
+
+    /* Publications */
+    .pub-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+
+    .pub-item {
+      padding: 16px 18px;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      background: white;
+      transition: box-shadow .2s;
+    }
+
+    .pub-item:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
+
+    .pub-title {
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .pub-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+
+    .pub-links a {
+      background: var(--accent-lt);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .pub-links a:hover { background: var(--accent); color: white; text-decoration: none; }
+
+    /* Teaching / Courses */
+    .course-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .course-item {
+      padding: 14px 16px;
+      border: 1px solid var(--rule);
+      background: white;
+    }
+
+    .course-code {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+    }
+
+    .course-title { font-size: 0.95rem; margin-top: 2px; }
+
+    .course-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    /* News */
+    .news-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 12px; }
+
+    .news-date {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+
+    .news-text { font-size: 0.95rem; }
+
+    /* CV download button */
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 9px 20px;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .btn:hover { background: var(--accent); text-decoration: none; }
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════ */
+    footer {
+      grid-area: footer;
+      border-top: 1px solid var(--rule);
+      padding: 20px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .shell {
+        grid-template-columns: 1fr;
+        grid-template-areas: "header" "main" "sidebar" "footer";
+        gap: 0;
+      }
+
+      aside { border-top: 1px solid var(--rule); padding-top: 24px; }
+
+      .course-grid { grid-template-columns: 1fr; }
+
+      header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      .header-text h1 { font-size: 1.9rem; }
+
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ══════════════════════════════════
+       HEADER — edit name, title, links
+       ══════════════════════════════════ -->
+  <header>
+    <div class="avatar-wrap">
+      <!-- CUSTOMISATION: replace src with your photo URL or file path.
+           Remove the <span> below once you have a real image.           -->
+      <!-- <img src="photo.jpg" alt="Profile photo" /> -->
+      <span class="avatar-placeholder">JD</span>
+    </div>
+
+    <div class="header-text">
+      <h1>Dr. Jane Doe</h1>
+      <p class="title-line">
+        Assistant Professor of Computational Linguistics ·
+        University of Somewhere
+      </p>
+      <div class="contact-row">
+        <a href="mailto:j.doe@university.edu">j.doe@university.edu</a>
+        <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+        <a href="https://github.com/janedoe" target="_blank">GitHub</a>
+        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">ORCID</a>
+        <a href="https://twitter.com/janedoe" target="_blank">@janedoe</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════
+       SIDEBAR — research interests,
+       affiliations, office hours
+       ══════════════════════════════════ -->
+  <aside>
+    <div class="sidebar-section">
+      <p class="sidebar-label">Research Interests</p>
+      <ul>
+        <li>Natural Language Processing</li>
+        <li>Discourse Analysis</li>
+        <li>Computational Pragmatics</li>
+        <li>Low-resource Languages</li>
+        <li>Interpretability</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">Affiliations</p>
+      <ul>
+        <li>Dept. of Linguistics</li>
+        <li>Centre for AI Research</li>
+        <li>ACL Member</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">Office Hours</p>
+      <ul>
+        <li>Tue 2 – 4 pm</li>
+        <li>Thu 10 – 12 pm</li>
+        <li>Room 314, Langham Hall</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">CV</p>
+      <!-- CUSTOMISATION: set href to your CV PDF path -->
+      <a class="btn" href="cv.pdf" target="_blank">Download CV</a>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════
+       MAIN CONTENT
+       ══════════════════════════════════ -->
+  <main>
+
+    <!-- BIO ─────────────────────────── -->
+    <section id="about" class="bio">
+      <h2 class="section-heading">About</h2>
+      <p>
+        I am an Assistant Professor in the Department of Linguistics at the
+        University of Somewhere, where I lead the
+        <a href="#">Computational Discourse Lab</a>. My research sits at the
+        intersection of formal pragmatics and large language models, asking
+        how machines can understand — and generate — language that is
+        sensitive to context, speaker intent, and social convention.
+      </p>
+      <p>
+        Before joining Somewhere, I was a postdoctoral researcher at the
+        Institute for Language Technology, Berlin (2021–23), and I completed
+        my PhD at MIT Linguistics in 2021 under the supervision of
+        <a href="#">Prof. Alan Sample</a>.
+      </p>
+    </section>
+
+    <!-- NEWS ────────────────────────── -->
+    <section id="news">
+      <h2 class="section-heading">News</h2>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">Mar 2026</span>
+          <span class="news-text">
+            Paper accepted at <em>ACL 2026</em>: "Pragmatic Inference in
+            Instruction-Tuned LLMs."
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Jan 2026</span>
+          <span class="news-text">
+            Awarded the NSF CAREER grant for low-resource discourse parsing.
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Nov 2025</span>
+          <span class="news-text">
+            Invited talk at the <em>Workshop on Evaluation &amp; Benchmarking</em>,
+            NeurIPS 2025.
+          </span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Sep 2025</span>
+          <span class="news-text">
+            New PhD student <a href="#">Max Müller</a> joins the lab.
+            Welcome, Max!
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- PUBLICATIONS ─────────────────── -->
+    <section id="publications">
+      <h2 class="section-heading">Selected Publications</h2>
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <p class="pub-title">
+            Pragmatic Inference in Instruction-Tuned Large Language Models
+          </p>
+          <p class="pub-authors">
+            Jane Doe, Max Müller, Alan Sample
+          </p>
+          <p class="pub-venue">ACL 2026 (to appear)</p>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+            <a href="#">arXiv</a>
+            <a href="#">Code</a>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <p class="pub-title">
+            Discourse Coherence Beyond the Sentence: A Cross-Lingual Study
+          </p>
+          <p class="pub-authors">
+            Jane Doe, Lisa Chen
+          </p>
+          <p class="pub-venue">Computational Linguistics, 49(2), 2024</p>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+            <a href="#">DOI</a>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <p class="pub-title">
+            RST-Bench: A Benchmark for Rhetorical Structure Theory Parsing
+          </p>
+          <p class="pub-authors">
+            Jane Doe, Tom Rivera, Alan Sample
+          </p>
+          <p class="pub-venue">EMNLP 2023</p>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+            <a href="#">arXiv</a>
+            <a href="#">Dataset</a>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <p class="pub-title">
+            Scalar Implicature and Model Calibration in GPT-Family Models
+          </p>
+          <p class="pub-authors">
+            Jane Doe
+          </p>
+          <p class="pub-venue">ACL Findings 2023</p>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+            <a href="#">arXiv</a>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- TEACHING ─────────────────────── -->
+    <section id="teaching">
+      <h2 class="section-heading">Teaching</h2>
+      <div class="course-grid">
+
+        <div class="course-item">
+          <p class="course-code">LING 201</p>
+          <p class="course-title">Introduction to Linguistics</p>
+          <p class="course-meta">Spring 2026 · Undergraduate</p>
+        </div>
+
+        <div class="course-item">
+          <p class="course-code">LING 512</p>
+          <p class="course-title">Computational Discourse Analysis</p>
+          <p class="course-meta">Fall 2025 · Graduate seminar</p>
+        </div>
+
+        <div class="course-item">
+          <p class="course-code">LING 415</p>
+          <p class="course-title">Natural Language Processing</p>
+          <p class="course-meta">Fall 2025 · Undergraduate/Graduate</p>
+        </div>
+
+        <div class="course-item">
+          <p class="course-code">LING 601</p>
+          <p class="course-title">Proseminar in Language and Computation</p>
+          <p class="course-meta">Spring 2025 · PhD core course</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ══════════════════════════════════
+       FOOTER
+       ══════════════════════════════════ -->
+  <footer>
+    <span>© 2026 Jane Doe</span>
+    <span>Last updated March 2026</span>
+  </footer>
+
+</div><!-- /shell -->
+</body>
+</html>
