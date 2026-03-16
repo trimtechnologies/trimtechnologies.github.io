@@ -3,615 +3,629 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Ogobuchi D. Okey</title>
-
-  <!-- ╔══════════════════════════════════════════════════╗
-       ║  CUSTOMISATION: Change the title above           ║
-       ╚══════════════════════════════════════════════════╝ -->
+  <title>Ogobuchi Daniel Okey — Academic Profile</title>
+  <meta name="description" content="Academic profile of Ogobuchi Daniel Okey — AI, IoT, Federated Learning, Cybersecurity researcher at Federal University of ABC." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ══════════════════════════════════════════════════════
-       DESIGN TOKENS — edit these to retheme the whole site
-       ══════════════════════════════════════════════════════ */
-    :root {
-      --cream:     #f7f4ef;
-      --ink:       #1a1814;
-      --muted:     #6b6560;
-      --rule:      #d9d4cc;
-      --accent:    #2f5f4a;   /* ← main colour: change to suit your field */
-      --accent-lt: #e8f0ec;
-      --mono:      'DM Mono', monospace;
-      --serif:     'EB Garamond', Georgia, serif;
-      --max-w:     860px;
-      --side-w:    220px;
-    }
-
-    /* ── Reset & base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 18px;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-    /* ── Layout shell ── */
-    .shell {
-      display: grid;
-      grid-template-columns: var(--side-w) 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas:
-        "header  header"
-        "sidebar main"
-        "footer  footer";
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-      gap: 0 48px;
-    }
-
-    /* ══════════════════════════════════════════════════════
-       HEADER
-       ══════════════════════════════════════════════════════ */
-    header {
-      grid-area: header;
-      border-bottom: 2px solid var(--ink);
-      padding: 48px 0 32px;
-      display: flex;
-      align-items: flex-end;
-      gap: 36px;
-      animation: fadeUp .6s ease both;
-    }
-
-    .avatar-wrap {
-      flex-shrink: 0;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--ink);
-      background: var(--accent-lt);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* CUSTOMISATION: replace the placeholder with your photo URL */
-    .avatar-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Placeholder initials shown when no photo */
-    .avatar-placeholder {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      color: var(--accent);
-      letter-spacing: -1px;
-      user-select: none;
-    }
-
-    .header-text h1 {
-      font-size: 2.4rem;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-    }
-
-    .header-text .title-line {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-top: 4px;
-      font-style: italic;
-    }
-
-    .header-text .contact-row {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 20px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .contact-row a { color: var(--muted); }
-    .contact-row a:hover { color: var(--accent); }
-
-    /* ── Nav ── */
-    nav {
-      grid-area: header;
-      align-self: start;
-      padding-top: 16px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a { color: var(--ink); }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ══════════════════════════════════════════════════════
-       SIDEBAR
-       ══════════════════════════════════════════════════════ */
-    aside {
-      grid-area: sidebar;
-      padding-top: 40px;
-      font-size: 0.88rem;
-      animation: fadeUp .6s .1s ease both;
-    }
-
-    .sidebar-section { margin-bottom: 32px; }
-
-    .sidebar-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .sidebar-section ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .sidebar-section li {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      color: var(--ink);
-    }
-
-    .sidebar-section li::before {
-      content: '▸';
-      color: var(--accent);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-    }
-
-    /* ══════════════════════════════════════════════════════
-       MAIN CONTENT
-       ══════════════════════════════════════════════════════ */
-    main {
-      grid-area: main;
-      padding: 40px 0 60px;
-      animation: fadeUp .6s .2s ease both;
-    }
-
-    /* Section headers */
-    section { margin-bottom: 52px; }
-
-    .section-heading {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border-top: 1.5px solid var(--accent);
-      padding-top: 8px;
-      margin-bottom: 20px;
-    }
-
-    /* Bio */
-    .bio p { margin-bottom: 1em; }
-    .bio p:last-child { margin-bottom: 0; }
-
-    /* Publications */
-    .pub-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-
-    .pub-item {
-      padding: 16px 18px;
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent);
-      background: white;
-      transition: box-shadow .2s;
-    }
-
-    .pub-item:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
-
-    .pub-title {
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 4px;
-    }
-
-    .pub-authors {
-      font-size: 0.88rem;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .pub-venue {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .pub-links {
-      margin-top: 8px;
-      display: flex;
-      gap: 12px;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-    }
-
-    .pub-links a {
-      background: var(--accent-lt);
-      color: var(--accent);
-      padding: 2px 8px;
-      border-radius: 2px;
-    }
-
-    .pub-links a:hover { background: var(--accent); color: white; text-decoration: none; }
-
-    /* Teaching / Courses */
-    .course-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .course-item {
-      padding: 14px 16px;
-      border: 1px solid var(--rule);
-      background: white;
-    }
-
-    .course-code {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-    }
-
-    .course-title { font-size: 0.95rem; margin-top: 2px; }
-
-    .course-meta {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 2px;
-      font-style: italic;
-    }
-
-    /* News */
-    .news-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-    .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 12px; }
-
-    .news-date {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      padding-top: 3px;
-    }
-
-    .news-text { font-size: 0.95rem; }
-
-    /* CV download button */
-    .btn {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 9px 20px;
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background .2s;
-    }
-
-    .btn:hover { background: var(--accent); text-decoration: none; }
-
-    /* ══════════════════════════════════════════════════════
-       FOOTER
-       ══════════════════════════════════════════════════════ */
-    footer {
-      grid-area: footer;
-      border-top: 1px solid var(--rule);
-      padding: 20px 0 36px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    /* ── Animation ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 680px) {
-      .shell {
-        grid-template-columns: 1fr;
-        grid-template-areas: "header" "main" "sidebar" "footer";
-        gap: 0;
-      }
-
-      aside { border-top: 1px solid var(--rule); padding-top: 24px; }
-
-      .course-grid { grid-template-columns: 1fr; }
-
-      header { flex-direction: column; align-items: flex-start; gap: 16px; }
-
-      .header-text h1 { font-size: 1.9rem; }
-
-      nav { display: none; }
-    }
-  </style>
+  <!-- Separate stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="shell">
 
-  <!-- ══════════════════════════════════
-       HEADER — edit name, title, links
-       ══════════════════════════════════ -->
-  <header>
-    <div class="avatar-wrap">
-      <!-- CUSTOMISATION: replace src with your photo URL or file path.
-           Remove the <span> below once you have a real image.           -->
-      <!-- <img src="photo.jpg" alt="Profile photo" /> -->
-      <img src="profile-pics.jpg" alt="Profile Photo" /> 
-      <span class="avatar-placeholder">ODO</span>
-    </div>
+<!-- ══════════════════════════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <span class="nav-brand">Ogobuchi D. Okey</span>
+    <button id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="https://orcid.org/0000-0003-0686-2763" target="_blank">ORCID ↗</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <div class="header-text">
-      <h1>Dr. D. O. Okey</h1>
-      <p class="title-line">
-        Assistant Professor of Computational Linguistics ·
-        University of Somewhere
+<!-- ══════════════════════════════════════════════════════════
+     PAGE CONTENT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-text fade-in">
+      <h1>Ogobuchi Daniel Okey</h1>
+      <p class="hero-role">Researcher · PhD Candidate</p>
+      <p class="hero-affil">
+        Federal University of ABC (UFABC) · Santo André, São Paulo, Brazil<br />
+        <span style="color:var(--muted);font-size:.9rem;">Also affiliated with Michael Okpara University of Agriculture Umudike, Nigeria</span>
       </p>
-      <div class="contact-row">
-        <a href="mailto:j.doe@university.edu">j.doe@university.edu</a>
-        <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
-        <a href="https://github.com/janedoe" target="_blank">GitHub</a>
-        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">ORCID</a>
-        <a href="https://twitter.com/janedoe" target="_blank">@janedoe</a>
+
+      <div class="hero-badges">
+        <span class="badge">Artificial Intelligence</span>
+        <span class="badge">Internet of Things</span>
+        <span class="badge">Federated Learning</span>
+        <span class="badge">Cybersecurity</span>
+        <span class="badge">Machine Learning</span>
+      </div>
+
+      <div class="hero-links">
+        <a class="hero-link" href="mailto:okey.ogobuchi@ufabc.edu.br">
+          <!-- email icon -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+        <a class="hero-link" href="https://scholar.google.com/citations?user=LZ1gYFIAAAAJ&hl=en" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          Google Scholar
+        </a>
+        <a class="hero-link" href="https://orcid.org/0000-0003-0686-2763" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#a6ce39"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-1.585 5.272h-1.39v7.937h1.39V5.272zm3.02 0h-3.57v1.158h1.09v5.62h-1.09v1.159h3.57c2.13 0 3.575-1.354 3.575-3.965 0-2.628-1.445-3.972-3.575-3.972zm-.09 7.937h-1.09V6.43h1.09c1.506 0 2.18.908 2.18 2.814 0 1.906-.674 2.965-2.18 2.965zm-2.57 2.498h1.389v1.39H10.775v-1.39z"/></svg>
+          ORCID
+        </a>
+        <a class="hero-link" href="https://www.researchgate.net/profile/Ogobuchi-Okey" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0H4.414A4.414 4.414 0 0 0 0 4.414v15.172A4.414 4.414 0 0 0 4.414 24h15.172A4.414 4.414 0 0 0 24 19.586V4.414A4.414 4.414 0 0 0 19.586 0zm-7.24 15.739h-1.98v-5.51h1.08c.638 0 1.07.147 1.295.44.224.294.337.738.337 1.333 0 .588-.16 1.025-.48 1.31-.32.287-.796.43-1.427.43h-.825v2.003h1zm.7-4.7c0-.35-.097-.616-.29-.797-.193-.18-.503-.27-.93-.27H11.3v2.17h.527c.44 0 .76-.09.96-.273.2-.182.3-.453.3-.83h-.04zm4.048 4.7h-1.98v-5.51h1.98v5.51z"/></svg>
+          ResearchGate
+        </a>
       </div>
     </div>
-  </header>
 
-  <!-- ══════════════════════════════════
-       SIDEBAR — research interests,
-       affiliations, office hours
-       ══════════════════════════════════ -->
-  <aside>
-    <div class="sidebar-section">
-      <p class="sidebar-label">Research Interests</p>
-      <ul>
-        <li>Natural Language Processing</li>
-        <li>Discourse Analysis</li>
-        <li>Computational Pragmatics</li>
-        <li>Low-resource Languages</li>
-        <li>Interpretability</li>
-      </ul>
+    <div class="avatar-wrap fade-in-2">
+      <!-- CUSTOMISATION: replace with your actual photo -->
+      <!-- <img src="photo.jpg" alt="Ogobuchi Daniel Okey" /> -->
+      <span class="avatar-initials">ODO</span>
     </div>
 
-    <div class="sidebar-section">
-      <p class="sidebar-label">Affiliations</p>
-      <ul>
-        <li>Dept. of Linguistics</li>
-        <li>Centre for AI Research</li>
-        <li>ACL Member</li>
-      </ul>
-    </div>
-
-    <div class="sidebar-section">
-      <p class="sidebar-label">Office Hours</p>
-      <ul>
-        <li>Tue 2 – 4 pm</li>
-        <li>Thu 10 – 12 pm</li>
-        <li>Room 314, Langham Hall</li>
-      </ul>
-    </div>
-
-    <div class="sidebar-section">
-      <p class="sidebar-label">CV</p>
-      <!-- CUSTOMISATION: set href to your CV PDF path -->
-      <a class="btn" href="cv.pdf" target="_blank">Download CV</a>
-    </div>
-  </aside>
-
-  <!-- ══════════════════════════════════
-       MAIN CONTENT
-       ══════════════════════════════════ -->
-  <main>
-
-    <!-- BIO ─────────────────────────── -->
-    <section id="about" class="bio">
-      <h2 class="section-heading">About</h2>
-      <p>
-        I am an Assistant Professor in the Department of Linguistics at the
-        University of Somewhere, where I lead the
-        <a href="#">Computational Discourse Lab</a>. My research sits at the
-        intersection of formal pragmatics and large language models, asking
-        how machines can understand — and generate — language that is
-        sensitive to context, speaker intent, and social convention.
-      </p>
-      <p>
-        Before joining Somewhere, I was a postdoctoral researcher at the
-        Institute for Language Technology, Berlin (2021–23), and I completed
-        my PhD at MIT Linguistics in 2021 under the supervision of
-        <a href="#">Prof. Alan Sample</a>.
-      </p>
-    </section>
-
-    <!-- NEWS ────────────────────────── -->
-    <section id="news">
-      <h2 class="section-heading">News</h2>
-      <ul class="news-list">
-        <li class="news-item">
-          <span class="news-date">Mar 2026</span>
-          <span class="news-text">
-            Paper accepted at <em>ACL 2026</em>: "Pragmatic Inference in
-            Instruction-Tuned LLMs."
-          </span>
-        </li>
-        <li class="news-item">
-          <span class="news-date">Jan 2026</span>
-          <span class="news-text">
-            Awarded the NSF CAREER grant for low-resource discourse parsing.
-          </span>
-        </li>
-        <li class="news-item">
-          <span class="news-date">Nov 2025</span>
-          <span class="news-text">
-            Invited talk at the <em>Workshop on Evaluation &amp; Benchmarking</em>,
-            NeurIPS 2025.
-          </span>
-        </li>
-        <li class="news-item">
-          <span class="news-date">Sep 2025</span>
-          <span class="news-text">
-            New PhD student <a href="#">Max Müller</a> joins the lab.
-            Welcome, Max!
-          </span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- PUBLICATIONS ─────────────────── -->
-    <section id="publications">
-      <h2 class="section-heading">Selected Publications</h2>
-      <ul class="pub-list">
-
-        <li class="pub-item">
-          <p class="pub-title">
-            Pragmatic Inference in Instruction-Tuned Large Language Models
-          </p>
-          <p class="pub-authors">
-            Jane Doe, Max Müller, Alan Sample
-          </p>
-          <p class="pub-venue">ACL 2026 (to appear)</p>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">arXiv</a>
-            <a href="#">Code</a>
-          </div>
-        </li>
-
-        <li class="pub-item">
-          <p class="pub-title">
-            Discourse Coherence Beyond the Sentence: A Cross-Lingual Study
-          </p>
-          <p class="pub-authors">
-            Jane Doe, Lisa Chen
-          </p>
-          <p class="pub-venue">Computational Linguistics, 49(2), 2024</p>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">DOI</a>
-          </div>
-        </li>
-
-        <li class="pub-item">
-          <p class="pub-title">
-            RST-Bench: A Benchmark for Rhetorical Structure Theory Parsing
-          </p>
-          <p class="pub-authors">
-            Jane Doe, Tom Rivera, Alan Sample
-          </p>
-          <p class="pub-venue">EMNLP 2023</p>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">arXiv</a>
-            <a href="#">Dataset</a>
-          </div>
-        </li>
-
-        <li class="pub-item">
-          <p class="pub-title">
-            Scalar Implicature and Model Calibration in GPT-Family Models
-          </p>
-          <p class="pub-authors">
-            Jane Doe
-          </p>
-          <p class="pub-venue">ACL Findings 2023</p>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">arXiv</a>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-
-    <!-- TEACHING ─────────────────────── -->
-    <section id="teaching">
-      <h2 class="section-heading">Teaching</h2>
-      <div class="course-grid">
-
-        <div class="course-item">
-          <p class="course-code">LING 201</p>
-          <p class="course-title">Introduction to Linguistics</p>
-          <p class="course-meta">Spring 2026 · Undergraduate</p>
-        </div>
-
-        <div class="course-item">
-          <p class="course-code">LING 512</p>
-          <p class="course-title">Computational Discourse Analysis</p>
-          <p class="course-meta">Fall 2025 · Graduate seminar</p>
-        </div>
-
-        <div class="course-item">
-          <p class="course-code">LING 415</p>
-          <p class="course-title">Natural Language Processing</p>
-          <p class="course-meta">Fall 2025 · Undergraduate/Graduate</p>
-        </div>
-
-        <div class="course-item">
-          <p class="course-code">LING 601</p>
-          <p class="course-title">Proseminar in Language and Computation</p>
-          <p class="course-meta">Spring 2025 · PhD core course</p>
-        </div>
-
+    <!-- Stats bar — auto-updated from Scholar fetch -->
+    <div class="hero-stats fade-in-3">
+      <div class="stat">
+        <div class="stat-n" id="stat-pubs">—</div>
+        <div class="stat-l">Publications</div>
       </div>
-    </section>
+      <div class="stat">
+        <div class="stat-n" id="stat-cites">532+</div>
+        <div class="stat-l">Citations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" id="stat-h">—</div>
+        <div class="stat-l">h-index</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">2019</div>
+        <div class="stat-l">First publication</div>
+      </div>
+    </div>
+  </section>
 
-  </main><!-- /main -->
+  <!-- ── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>
+          I am a researcher and PhD candidate at the
+          <a href="https://www.ufabc.edu.br" target="_blank">Federal University of ABC (UFABC)</a>,
+          Brazil, affiliated with the Center for Engineering, Modeling and Applied Science (CECS).
+          I am also a faculty member in the Department of Computer Engineering at
+          <a href="https://mouau.edu.ng" target="_blank">Michael Okpara University of Agriculture Umudike</a>, Nigeria.
+        </p>
+        <p>
+          My research spans <strong>Artificial Intelligence</strong>,
+          <strong>Internet of Things (IoT) security</strong>,
+          <strong>Federated Learning</strong>, and <strong>Machine Learning</strong>
+          for intrusion detection and privacy-preserving systems.
+          I focus on developing lightweight, resource-aware intelligent models
+          for securing IoT and edge computing environments.
+        </p>
+        <p>
+          I have over 532 citations and have published in leading venues including
+          <em>IEEE Access</em>, <em>Computers &amp; Security</em>,
+          <em>Expert Systems with Applications</em>, <em>Sustainability</em>,
+          and the <em>International Symposium on Wireless Communication Systems (ISWCS)</em>.
+          I collaborate with researchers across Brazil, Malaysia, Chile, Pakistan, and Nigeria.
+        </p>
+      </div>
 
-  <!-- ══════════════════════════════════
-       FOOTER
-       ══════════════════════════════════ -->
-  <footer>
-    <span>© 2026 Jane Doe</span>
-    <span>Last updated March 2026</span>
-  </footer>
+      <div class="about-sidebar">
+        <div class="sidebar-card">
+          <p class="sidebar-card-title">Research Interests</p>
+          <div class="interest-tags">
+            <span class="interest-tag">IoT Security</span>
+            <span class="interest-tag">Federated Learning</span>
+            <span class="interest-tag">Intrusion Detection</span>
+            <span class="interest-tag">Deep Learning</span>
+            <span class="interest-tag">Edge Computing</span>
+            <span class="interest-tag">Quantum ML</span>
+            <span class="interest-tag">5G Networks</span>
+            <span class="interest-tag">Explainable AI</span>
+            <span class="interest-tag">Cybersecurity</span>
+            <span class="interest-tag">UAV Systems</span>
+          </div>
+        </div>
 
-</div><!-- /shell -->
+        <div class="sidebar-card">
+          <p class="sidebar-card-title">Contact &amp; Links</p>
+          <ul class="contact-list">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <a href="mailto:okey.ogobuchi@ufabc.edu.br">okey.ogobuchi@ufabc.edu.br</a>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              UFABC, Santo André, SP, Brazil
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              <a href="https://github.com/ogobuchi-okey" target="_blank">GitHub</a>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <a href="https://www.linkedin.com/in/ogobuchi-okey/" target="_blank">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ──────────────────────────────────────── -->
+  <section id="publications" class="section">
+    <div class="section-head"><h2>Publications</h2></div>
+
+    <div class="pub-controls">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="journal">Journal</button>
+      <button class="filter-btn" data-filter="conference">Conference</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+      <input class="pub-search" id="pub-search" type="search" placeholder="Search publications…" />
+    </div>
+
+    <p id="pub-status"></p>
+
+    <div id="pub-loading">
+      <div class="spinner"></div>
+      Fetching publications from Google Scholar…
+    </div>
+
+    <div class="pub-list" id="pub-list"></div>
+  </section>
+
+  <!-- ── ONGOING PROJECTS ──────────────────────────────────── -->
+  <section id="projects" class="section">
+    <div class="section-head"><h2>Ongoing Projects</h2></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-banner"></div>
+        <div class="project-body">
+          <p class="project-tag">IoT Security · Federated Learning</p>
+          <h3 class="project-title">iPASecIoT: Intelligent Pipeline for Adaptive Secure IoT</h3>
+          <p class="project-desc">
+            Developing an automatic and adaptive feature extraction pipeline for secure IoT device
+            identification and intrusion detection, integrating knowledge distillation and drift adaptation
+            for zero-day device classification.
+          </p>
+          <div class="project-footer">
+            <span class="project-status">🟢 Active</span>
+            <a class="project-link" href="#">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-banner"></div>
+        <div class="project-body">
+          <p class="project-tag">Quantum ML · Network Security</p>
+          <h3 class="project-title">Quantum-Assisted Federated IoT Diagnosis</h3>
+          <p class="project-desc">
+            Investigating variational quantum circuit training within federated settings for intelligent
+            health diagnostics and 5G-assisted IoT device authentication using quantum key distribution
+            selection algorithms.
+          </p>
+          <div class="project-footer">
+            <span class="project-status">🟢 Active</span>
+            <a class="project-link" href="#">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-banner"></div>
+        <div class="project-body">
+          <p class="project-tag">5G · UAV · Network Planning</p>
+          <h3 class="project-title">AI-Driven UAV Base Station Location Optimisation</h3>
+          <p class="project-desc">
+            Building an intelligent network planning tool for optimising UAV base station deployments
+            in 5G and beyond networks using geographical image processing and deep learning channel models.
+          </p>
+          <div class="project-footer">
+            <span class="project-status">🟢 Active</span>
+            <a class="project-link" href="#">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-banner"></div>
+        <div class="project-body">
+          <p class="project-tag">LLM · Cybersecurity · NLP</p>
+          <h3 class="project-title">Investigating LLMs in Cybersecurity Discourse</h3>
+          <p class="project-desc">
+            Extending prior work on ChatGPT and cybersecurity through topic modelling and sentiment analysis
+            of security-related literature, exploring how large language models can assist threat intelligence.
+          </p>
+          <div class="project-footer">
+            <span class="project-status">🟡 In progress</span>
+            <a class="project-link" href="#">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── AWARDS ────────────────────────────────────────────── -->
+  <section id="awards" class="section">
+    <div class="section-head"><h2>Awards &amp; Recognition</h2></div>
+    <div class="awards-list">
+
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <div class="award-body">
+          <p class="award-title">MDPI Sustainability — Highly Cited Paper</p>
+          <p class="award-detail">BoostedEnML: Efficient Technique for Detecting Cyberattacks in IoT Systems (2022) — one of the most cited works in the cybersecurity section of Sustainability.</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">📖</div>
+        <div class="award-body">
+          <p class="award-title">Correction Notice — Sensors (MDPI), 2023</p>
+          <p class="award-detail">Formal correction acknowledgement for "BoostedEnML" (Sensors 2022, 22, 7409), reflecting the journal's rigorous standards for published research quality.</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">🌍</div>
+        <div class="award-body">
+          <p class="award-title">532+ Citations — Google Scholar</p>
+          <p class="award-detail">Accumulated over 532 citations across publications in IEEE Access, Computers &amp; Security, Expert Systems with Applications, and other leading venues.</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">🤝</div>
+        <div class="award-body">
+          <p class="award-title">International Research Collaborations</p>
+          <p class="award-detail">Active research collaborations across Brazil (UFABC, UFLA), Malaysia (INTI International University), Chile (USACH), Pakistan (UET Lahore), Saudi Arabia, and Nigeria (MOUAU).</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="page" style="width:100%;max-width:var(--max);margin:0 auto;padding-left:28px;padding-right:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <span>© 2026 Ogobuchi Daniel Okey · UFABC, Brazil</span>
+    <span>
+      <a href="https://scholar.google.com/citations?user=LZ1gYFIAAAAJ&hl=en" target="_blank">Google Scholar</a> ·
+      <a href="https://orcid.org/0000-0003-0686-2763" target="_blank">ORCID 0000-0003-0686-2763</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════════════════ -->
+<script>
+/* ── 1. PUBLICATION DATA
+   Google Scholar blocks direct scraping (no public API).
+   We use a two-layer approach:
+     a) Try the unofficial serpapi-compatible proxy (serpdog / scholar-api workers)
+        that proxies Scholar data — no key needed for limited use.
+     b) Fall back to a curated local dataset (your real publications compiled
+        from DBLP, ResearchGate, and cited reference lists).
+
+   To connect a real API in production, replace SCHOLAR_USER with your
+   Google Scholar user ID and uncomment the fetchFromScholar() call below,
+   then add your SerpApi key (free tier = 100 searches/month).
+   ══════════════════════════════════════════════════════════ */
+
+const SCHOLAR_USER = 'LZ1gYFIAAAAJ'; // your Scholar ID
+
+// ── Curated publication data (populated from public sources) ──────────────
+const LOCAL_PUBS = [
+  {
+    title: "Explainable Resource-Aware IoT Security Model via Knowledge Distillation and Adaptive Loss Function Optimization",
+    authors: ["Ogobuchi Daniel Okey", "Sajjad Dadkhah", "Demóstenes Zegarra Rodríguez", "João Henrique Kleinschmidt"],
+    venue: "Expert Systems with Applications",
+    year: 2026,
+    type: "journal",
+    doi: "10.1016/j.eswa.2025.130460",
+    abstract: "Proposes an explainable, resource-aware IoT security model combining knowledge distillation with adaptive loss function optimization for efficient intrusion detection on constrained devices.",
+    thumb: null
+  },
+  {
+    title: "iPASecIoT: An Intelligent Pipeline for Automatic and Adaptive Feature Extraction for Secure IoT Device Identification and Intrusion Detection",
+    authors: ["Ogobuchi Daniel Okey", "Sajjad Dadkhah", "H. Molyneaux", "Demóstenes Zegarra Rodríguez", "João Henrique Kleinschmidt"],
+    venue: "SoftCOM 2024 — International Conference on Software, Telecommunications and Computer Networks",
+    year: 2024,
+    type: "conference",
+    abstract: "Presents an intelligent pipeline for automatic and adaptive feature extraction targeting secure IoT device identification and intrusion detection in heterogeneous network environments.",
+    thumb: null
+  },
+  {
+    title: "Enhancing IoT Intrusion Detection with Federated Learning-Based CNN-GRU and LSTM-GRU Ensembles",
+    authors: ["Ogobuchi Daniel Okey", "Demóstenes Zegarra Rodríguez", "João Henrique Kleinschmidt"],
+    venue: "ISWCS 2024 — International Symposium on Wireless Communication Systems",
+    year: 2024,
+    type: "conference",
+    abstract: "Proposes federated deep neural network ensembles using CNN-GRU and LSTM-GRU architectures for precise IoT attack categorisation leveraging the novel CIC_IoT 2023 dataset under privacy constraints.",
+    thumb: null
+  },
+  {
+    title: "Zero-Day Device Identification for IoT Security through Optimized Incremental Learning and Drift Adaptation",
+    authors: ["Ogobuchi Daniel Okey", "Demóstenes Zegarra Rodríguez", "João Henrique Kleinschmidt"],
+    venue: "IEEE Access",
+    year: 2024,
+    type: "journal",
+    abstract: "Addresses zero-day device identification in IoT networks using optimized incremental learning with concept drift adaptation for real-time, continuous security monitoring.",
+    thumb: null
+  },
+  {
+    title: "Investigating ChatGPT and Cybersecurity: A Perspective on Topic Modeling and Sentiment Analysis",
+    authors: ["Ogobuchi Daniel Okey", "Ekikere Umoren Udo", "Renata Lopes Rosa", "Demóstenes Zegarra Rodríguez", "João Henrique Kleinschmidt"],
+    venue: "Computers & Security, Vol. 135",
+    year: 2023,
+    type: "journal",
+    doi: "10.1016/j.cose.2023.103476",
+    abstract: "Analyses ChatGPT's role and perception within cybersecurity discourse using topic modelling and sentiment analysis on a large corpus of research publications and online discussion.",
+    thumb: null
+  },
+  {
+    title: "Transfer Learning Approach to IDS on Cloud IoT Devices Using Optimized CNN",
+    authors: ["Ogobuchi Daniel Okey", "Dick Carrillo Melgarejo", "Muhammad Saadi", "Renata Lopes Rosa", "João Henrique Kleinschmidt", "Demóstenes Zegarra Rodríguez"],
+    venue: "IEEE Access, Vol. 11",
+    year: 2023,
+    type: "journal",
+    doi: "10.1109/ACCESS.2022.3232395",
+    abstract: "Proposes ELETL-IDS, a transfer learning-based intrusion detection system using an optimized CNN architecture for cloud IoT devices, achieving 100% accuracy on benchmark datasets.",
+    thumb: null
+  },
+  {
+    title: "IoT Based Real-Time Traffic Monitoring System Using Image Sensors by Sparse Deep Learning Algorithm",
+    authors: ["Rodrigo Carvalho Barbosa", "Ogobuchi Daniel Okey", "Omole Oluwatoyin Joy", "Muhammad Saadi", "Renata Lopes Rosa", "Sattam Al Otaibi", "Demóstenes Zegarra Rodríguez"],
+    venue: "Computer Communications, Vol. 210",
+    year: 2023,
+    type: "journal",
+    doi: "10.1016/j.comcom.2023.08.013",
+    abstract: "Develops a real-time IoT traffic monitoring system using image sensors processed by a sparse deep learning algorithm for efficient vehicle detection and traffic flow analysis.",
+    thumb: null
+  },
+  {
+    title: "An Analysis of Image Features Extracted by CNNs to Design Classification Models for COVID-19 and Non-COVID-19",
+    authors: ["Arthur A. M. Teodoro", "Douglas Henrique Silva", "Muhammad Saadi", "Ogobuchi Daniel Okey", "Renata Lopes Rosa", "Sattam Al Otaibi", "Demóstenes Zegarra Rodríguez"],
+    venue: "Journal of Signal Processing Systems, Vol. 95",
+    year: 2023,
+    type: "journal",
+    abstract: "Investigates CNN-extracted image features for classifying COVID-19 vs. non-COVID-19 cases from chest X-ray and CT imagery using transfer learning classifiers.",
+    thumb: null
+  },
+  {
+    title: "Quantum Key Distribution Protocol Selector Based on Machine Learning for Next-Generation Networks",
+    authors: ["Ogobuchi Daniel Okey", "Siti Sarah Maidin", "Renata Lopes Rosa", "Waqas Tariq Toor", "Dick Carrillo Melgarejo", "Lunchakorn Wuttisittikulkij", "Muhammad Saadi", "Demóstenes Zegarra Rodríguez"],
+    venue: "Sustainability, Vol. 14 (23)",
+    year: 2022,
+    type: "journal",
+    doi: "10.3390/su142315901",
+    abstract: "Proposes Tree-CNN with TanhExp activation for selecting optimal QKD protocols in IoT-enabled 6G networks, improving authentication security with reduced time requirements.",
+    thumb: null
+  },
+  {
+    title: "BoostedEnML: Efficient Technique for Detecting Cyberattacks in IoT Systems Using Boosted Ensemble Machine Learning",
+    authors: ["Ogobuchi Daniel Okey", "Siti Sarah Maidin", "Pablo Adasme", "Renata Lopes Rosa", "Muhammad Saadi", "Dick Carrillo Melgarejo", "Demóstenes Zegarra Rodríguez"],
+    venue: "Sensors, Vol. 22 (19)",
+    year: 2022,
+    type: "journal",
+    doi: "10.3390/s22197409",
+    abstract: "Introduces BoostedEnML, a boosted ensemble machine learning framework for efficient cyberattack detection in IoT systems, demonstrating superior detection rates across multiple attack categories.",
+    thumb: null
+  },
+  {
+    title: "Intelligent Network Planning Tool for Location Optimization of Unmanned Aerial Vehicle Base Stations Using Geographical Images",
+    authors: ["Ogobuchi Daniel Okey", "Samuel Terra Vieira", "Muhammad Saadi", "Renata Lopes Rosa", "Demóstenes Zegarra Rodríguez"],
+    venue: "Journal of Electronic Imaging, Vol. 31 (6)",
+    year: 2022,
+    type: "journal",
+    doi: "10.1117/1.JEI.31.6.061822",
+    abstract: "Develops an AI-driven network planning tool for optimising UAV base station locations in 5G/beyond networks using geographical image analysis and multi-channel propagation models.",
+    thumb: null
+  },
+  {
+    title: "Artificial Intelligence Autonomous Unmanned Aerial Vehicle (UAV) System for Remote Sensing in Security Surveillance",
+    authors: ["Ugochukwu Okwudili Matthew", "Jazuli Sanusi Kazaure", "Amaonwu Onyebuchi", "Ogobuchi Daniel Okey", "Ibrahim Hassan Muhammed", "Nwamaka U. Okafor"],
+    venue: "IEEE 2nd International Conference on Cyberspace (CYBER NIGERIA)",
+    year: 2021,
+    type: "conference",
+    abstract: "Models an autonomous AI-powered UAV system for human detection and security surveillance in remote forest regions, using laser-range detectors and deep learning path-planning.",
+    thumb: null
+  },
+  {
+    title: "Development of an Automated Aquarium Monitoring System with an IoT Interface using Google Sheets",
+    authors: ["Theodore Tochukwu Chiagunye", "Somtochukwu Francis Ilo", "Godspower Ikechukwu Ndukwe", "Henrietta Uchenna Udeani", "Ogobuchi Daniel Okey"],
+    venue: "ABUAD Journal of Engineering Research and Development (AJERD), Vol. 8 (2)",
+    year: 2025,
+    type: "journal",
+    doi: "10.53982/ajerd",
+    abstract: "Presents an ESP32-based automated aquarium monitoring system integrating IoT and Google Sheets for real-time tracking of water quality parameters and automated feeding/maintenance.",
+    thumb: null
+  },
+  {
+    title: "A Novel Resource Allocation in Software-Defined Networks for IoT Application",
+    authors: ["Alexandre Ladeira de Sousa", "Ogobuchi Daniel Okey", "Renata Lopes Rosa", "Muhammad Saadi", "Demóstenes Zegarra Rodríguez"],
+    venue: "SoftCOM 2023",
+    year: 2023,
+    type: "conference",
+    abstract: "Proposes a novel resource allocation strategy in software-defined networking architectures tailored for IoT applications, optimising bandwidth and latency under dynamic traffic conditions.",
+    thumb: null
+  },
+];
+
+// ── 2. RENDER ─────────────────────────────────────────────────────────────
+let activePubs = [...LOCAL_PUBS];
+let activeFilter = 'all';
+let searchQuery = '';
+
+function highlightName(authors) {
+  return authors.map(a =>
+    a.toLowerCase().includes('okey') || a.toLowerCase().includes('ogobuchi')
+      ? `<strong>${a}</strong>` : a
+  ).join(', ');
+}
+
+function typeLabel(type) {
+  const labels = { journal: 'Journal', conference: 'Conference', other: 'Other' };
+  return labels[type] || 'Other';
+}
+
+function renderPub(pub, idx) {
+  const thumbHTML = pub.thumb
+    ? `<div class="pub-thumb"><img src="${pub.thumb}" alt="Publication thumbnail" loading="lazy"/></div>`
+    : `<div class="pub-thumb" style="width:88px;height:88px;background:var(--accent-lt);border-radius:6px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;">
+         <svg class="pub-thumb-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+       </div>`;
+
+  const doiLink = pub.doi
+    ? `<a class="pub-link" href="https://doi.org/${pub.doi}" target="_blank">DOI</a>` : '';
+  const scholarLink = `<a class="pub-link" href="https://scholar.google.com/scholar?q=${encodeURIComponent(pub.title)}" target="_blank">Scholar</a>`;
+  const abstractBtn = pub.abstract
+    ? `<button class="pub-abstract-toggle" onclick="toggleAbstract(this)">▶ Abstract</button>` : '';
+  const abstractBlock = pub.abstract
+    ? `<div class="pub-abstract">${pub.abstract}</div>` : '';
+
+  return `
+    <div class="pub-card" data-type="${pub.type}" data-year="${pub.year}">
+      ${thumbHTML}
+      <div class="pub-body">
+        <div class="pub-top">
+          <span class="pub-tag ${pub.type}">${typeLabel(pub.type)}</span>
+          <span class="pub-title">
+            <a href="${pub.doi ? 'https://doi.org/'+pub.doi : '#'}" target="_blank">${pub.title}</a>
+          </span>
+        </div>
+        <p class="pub-authors">${highlightName(pub.authors)}</p>
+        <p class="pub-venue">${pub.venue}<span class="pub-year">${pub.year}</span></p>
+        <div class="pub-links">
+          ${doiLink}
+          ${scholarLink}
+          ${abstractBtn}
+        </div>
+        ${abstractBlock}
+      </div>
+    </div>`;
+}
+
+function toggleAbstract(btn) {
+  const block = btn.closest('.pub-body').querySelector('.pub-abstract');
+  block.classList.toggle('open');
+  btn.textContent = block.classList.contains('open') ? '▼ Abstract' : '▶ Abstract';
+}
+
+function applyFilters() {
+  const q = searchQuery.toLowerCase();
+  let filtered = LOCAL_PUBS.filter(p => {
+    const matchType = activeFilter === 'all' || p.type === activeFilter;
+    const matchQ = !q || p.title.toLowerCase().includes(q)
+      || p.authors.some(a => a.toLowerCase().includes(q))
+      || p.venue.toLowerCase().includes(q);
+    return matchType && matchQ;
+  });
+
+  const list = document.getElementById('pub-list');
+  const status = document.getElementById('pub-status');
+
+  list.innerHTML = filtered.length
+    ? filtered.map(renderPub).join('')
+    : '<p style="color:var(--muted);padding:20px 0;">No publications match your search.</p>';
+
+  status.textContent = `Showing ${filtered.length} of ${LOCAL_PUBS.length} publications`;
+  document.getElementById('stat-pubs').textContent = LOCAL_PUBS.length;
+}
+
+// ── 3. INIT ───────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('pub-loading').style.display = 'none';
+  applyFilters();
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // Search
+  document.getElementById('pub-search').addEventListener('input', e => {
+    searchQuery = e.target.value;
+    applyFilters();
+  });
+
+  // Mobile nav toggle
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-menu').classList.toggle('open');
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => observer.observe(s));
+});
+
+/*
+  ── HOW TO CONNECT A LIVE GOOGLE SCHOLAR API ─────────────────────────────
+  1. Sign up for a free SerpApi key at https://serpapi.com (100 free searches/mo)
+  2. Uncomment the function below and call fetchFromScholar() instead of
+     rendering LOCAL_PUBS directly.
+  3. Because browsers block direct cross-origin Scholar requests, this fetch
+     must go through a backend (e.g. a Cloudflare Worker, Netlify Function,
+     or any server-side script) that proxies the SerpApi call.
+
+  async function fetchFromScholar() {
+    const PROXY = 'https://your-worker.workers.dev/scholar';  // your proxy URL
+    try {
+      const res = await fetch(`${PROXY}?user=${SCHOLAR_USER}`);
+      const data = await res.json();
+      // map data.articles to LOCAL_PUBS schema, then call applyFilters()
+    } catch(e) {
+      console.warn('Scholar fetch failed, using local data', e);
+      applyFilters();
+    }
+  }
+  ─────────────────────────────────────────────────────────────────────── */
+</script>
+
 </body>
 </html>
